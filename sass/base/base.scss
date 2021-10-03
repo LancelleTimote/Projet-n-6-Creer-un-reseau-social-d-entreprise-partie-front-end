@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, Verdana, 'Times New Roman', Tahoma, sans-serif;
+    background-image: url(../pictures/building_1.jpg);
+    background-size: 100%;
+    margin: auto;
+    p, a {
+        color: $color-text;
+    }
+    a {
+        text-decoration: none;
+    }
+    a:hover {
+        color: $color-hyperlink;
+    }
+    p {
+        margin: 0;
+    }
+}
