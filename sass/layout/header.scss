@@ -1,7 +1,19 @@
 header {
+   border-bottom: 5px solid $color-hyperlink-border;
+   display: flex;
+   justify-content: space-between;
    img {
-    max-width: 63px;
-    height: auto;
-    margin-left: 50px;
-   } 
+      margin-left: 50px;
+      height: 75px;
+   }
+   ul {
+      margin-right: 44px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 300px;
+      li {
+         margin: 0 35px;
+      }
+   }
 }

@@ -1,7 +1,7 @@
 body {
   font-family: Arial, Verdana, "Times New Roman", Tahoma, sans-serif;
   background-image: url(../pictures/building_1.jpg);
-  background-size: 100%;
+  background-size: cover;
   margin: auto;
 }
 body p, body a {
@@ -11,19 +11,29 @@ body a {
   text-decoration: none;
 }
 body a:hover {
-  color: #41547b;
+  color: #274880;
 }
 body p {
   margin: 0;
 }
+body ul {
+  list-style: none;
+  padding: 0;
+}
 
-.section__index {
+.main__index {
+  font-size: 30px;
+  height: 730px;
+  text-align: center;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
-.section__index p img {
+.main__index img {
   width: 450px;
+}
+.main__index li {
+  margin-bottom: 20px;
 }
 
 header, footer {
@@ -31,20 +41,39 @@ header, footer {
   font-size: 20px;
 }
 
+header {
+  border-bottom: 5px solid #274880;
+  display: flex;
+  justify-content: space-between;
+}
 header img {
-  max-width: 63px;
-  height: auto;
   margin-left: 50px;
+  height: 75px;
+}
+header ul {
+  margin-right: 44px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+}
+header ul li {
+  margin: 0 35px;
 }
 
+footer {
+  border-top: 5px solid #274880;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
 footer ul {
-  padding: 0;
-  list-style: none;
   display: flex;
   justify-content: center;
 }
 footer ul li {
-  margin: 20px;
+  margin: 10px 35px;
 }
 
 /*# sourceMappingURL=style.css.map */
