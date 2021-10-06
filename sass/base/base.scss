@@ -4,13 +4,13 @@ body {
     background-size: cover;
     margin: auto;
     p, a {
-        color: $color-text;
+        color: $color-text-background_main;
     }
     a {
         text-decoration: none;
     }
     a:hover {
-        color: $color-hyperlink-border;
+        color: $color-hyperlink-border-text_main;
     }
     p {
         margin: 0;

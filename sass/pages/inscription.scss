@@ -1,21 +1,48 @@
-.main__inscription, .main__inscription--form p, .main__inscription--form--button {
+.main__inscription, .main__inscription--form p {
     display: flex;
     flex-direction: column;
 }
 
 .main__inscription {
     align-items: center;
+    &--textend {
+        margin-top: 20px;
+    }
     &--form {
-        margin-top: 75px;
+        margin-top: 95px;
         width: 500px;
-        background-color: white;
-        border: 5px solid $color-hyperlink-border;
+        background-color: $color-text-background_main;
+        border: 5px solid $color-hyperlink-border-text_main;
         h1 {
-            color: $color-hyperlink-border;
+            color: $color-hyperlink-border-text_main;
             text-align: center;
+            margin-bottom: 60px;
         }
         p {
-            color: black;
+            color: $color-text-form;
+            margin: 20px;
+            input {
+                border: none;
+                border-bottom: 2px solid $color-hyperlink-border-text_main;
+            }
+        }
+        label {
+            margin-bottom: 15px;
+        }
+        &--asterisk {
+            color: $color-asterisk;
+        }
+        &--group {
+            display: flex;
+            justify-content: center;
+            &--button {
+                width: 150px;
+                height: 40px;
+                margin: 0 20px 20px 20px;
+                background-color: $color-background_button;
+                border: 3px solid $color-hyperlink-border-text_main;
+                border-radius: 5px;
+            }
         }
     }
 }
