@@ -1,0 +1,21 @@
+.main__inscription, .main__inscription--form p, .main__inscription--form--button {
+    display: flex;
+    flex-direction: column;
+}
+
+.main__inscription {
+    align-items: center;
+    &--form {
+        margin-top: 75px;
+        width: 500px;
+        background-color: white;
+        border: 5px solid $color-hyperlink-border;
+        h1 {
+            color: $color-hyperlink-border;
+            text-align: center;
+        }
+        p {
+            color: black;
+        }
+    }
+}

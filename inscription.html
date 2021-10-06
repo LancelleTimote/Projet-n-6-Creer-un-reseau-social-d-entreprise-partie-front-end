@@ -22,11 +22,57 @@
         <meta property="twitter:image" content="https://i.ibb.co/C6BcjPq/picture-metatags.png">
     </head>
     <body>
-        <main>
-
+        <header>
+            <a href="index.html"><img src="pictures/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania."/></a>
+            <ul>
+                <li>
+                    <a href="connexion.html">Connexion</a>
+                </li>
+                <li>
+                    <a href="inscription.html">Inscription</a>
+                </li>
+            </ul>
+        </header>
+        <main class="main__inscription">
+            <form class="main__inscription--form">
+                <h1>Créez un compte</h1>
+                <p>
+                    <label for="nom">Nom*</label>
+                    <input type="text" name="nom" id="nom" size="30" maxlength="30" placeholder="Pierre" required />
+                </p>
+                <p>
+                    <label for="prenom">Prénom*</label>
+                    <input type="text" name="prenom" id="prenom" size="30" maxlength="30" placeholder="Dupont" required />
+                </p>
+                <p>
+                    <label for="mail">Email*</label>
+                    <input type="email" name="mail" id="mail" size="50" maxlength="50" placeholder="pierre-dupont@groupomania.com" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$" required />
+                </p>
+                <p>
+                    <label for="pass">Mot de passe*</label>
+                    <input type="password" name="pass" id="pass" size="40" maxlength="40" required />
+                </p>
+                <p>
+                    <label for="confirm_pass">Confirmer le mot de passe*</label>
+                    <input type="password" name="confirm_pass" id="confirm_pass" size="40" maxlength="40" required />
+                </p>
+                <input class="main__inscription--form--button" type="submit" value="S'inscrire" />
+                <input class="main__inscription--form--button" type="reset" value="Remise à zéro" />
+            </form>
+            <p>Vous avez déjà un compte ? <a href="connexion.html">Identifiez-vous !</a></p>
         </main>
         <footer>
-
+            <ul>
+                <li>
+                    <a href="a_propos.html">À propos</a>
+                </li>
+                <li>
+                    <a href="mentions_legales.html">Mentions légales</a>
+                </li>
+                <li>
+                    <a href="support.html">Support</a>
+                </li>
+            </ul>
         </footer>
     </body>
 </html>
