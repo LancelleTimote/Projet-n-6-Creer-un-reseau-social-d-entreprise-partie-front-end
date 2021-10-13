@@ -1,19 +1,17 @@
 header {
    border-bottom: 5px solid $color-hyperlink-border-text_main;
-   display: flex;
-   justify-content: space-between;
-   img {
-      margin-left: 50px;
-      height: 75px;
-   }
-   ul {
-      margin-right: 44px;
+   top: 0;
+   .container {
       display: flex;
-      justify-content: space-around;
-      align-items: center;
-      width: 300px;
-      li {
-         margin: 0 35px;
+      justify-content: space-between;
+      @media (max-width: 1024px) {
+         width: 100%;
+      }
+      ul {
+         display: flex;
+         li {
+            margin: 0 35px;
+         }
       }
    }
 }
