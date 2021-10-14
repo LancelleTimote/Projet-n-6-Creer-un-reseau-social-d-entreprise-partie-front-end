@@ -4,14 +4,12 @@ html {
 
 body {
     font-family: Arial, Verdana, 'Times New Roman', Tahoma, sans-serif;
-    background-image: url(../pictures/building_1.jpg);
-    background-size: cover;
-    margin: auto;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 0;
+    height: 100%;
+    main {
+        background-image: url(../pictures/building_1.jpg);
+        background-size: cover;
+    }
     p, a {
         color: $color-text-background_main;
     }
@@ -28,8 +26,8 @@ body {
         list-style: none;
         padding: 0;
     }
-    .container {
-        @media (min-width: 1440px) {
+    @media (min-width: 1440px) {
+        .container {
             width: 1440px;
         }
     }

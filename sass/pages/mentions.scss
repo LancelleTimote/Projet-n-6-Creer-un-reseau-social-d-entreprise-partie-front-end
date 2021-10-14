@@ -1,10 +1,9 @@
 .main__mentions {
     text-align: center;
-    margin: 125px 0;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
     h1, h2 {
         color: $color-text-background_main;
-    }
-    h1 {
-        margin-top: 0;
     }
 }
