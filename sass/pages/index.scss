@@ -1,13 +1,10 @@
 .main__index {
+    min-height: 100vh;
     font-size: 30px;
     text-align: center;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    img {
-        width: 450px;
-    }
     li {
         margin-bottom: 20px;
     }
