@@ -1,15 +1,19 @@
-.main__inscription, .main__inscription--form p {
+.main__inscription, .main__inscription--form p, .main__inscription .container {
     display: flex;
     flex-direction: column;
 }
 
 .main__inscription {
+    min-height: 100vh;
+    justify-content: center;
     align-items: center;
+    .container {
+        align-items: center;
+    }
     &--textend {
         margin-top: 20px;
     }
     &--form {
-        margin-top: 95px;
         width: 500px;
         background-color: $color-text-background_main;
         border: 5px solid $color-hyperlink-border-text_main;

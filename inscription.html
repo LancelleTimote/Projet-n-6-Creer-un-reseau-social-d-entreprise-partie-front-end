@@ -23,58 +23,64 @@
     </head>
     <body>
         <header>
-            <a href="index.html"><img src="pictures/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania."/></a>
-            <ul>
-                <li>
-                    <a href="connexion.html">Connexion</a>
-                </li>
-                <li>
-                    <a href="inscription.html">Inscription</a>
-                </li>
-            </ul>
+            <div class="container">
+                <a href="index.html"><img src="pictures/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." class="animation__link"/></a>
+                <ul>
+                    <li>
+                        <a href="connexion.html" class="animation__link">Connexion</a>
+                    </li>
+                    <li>
+                        <a href="inscription.html" class="animation__link">Inscription</a>
+                    </li>
+                </ul>
+            </div>
         </header>
         <main class="main__inscription">
-            <form class="main__inscription--form">
-                <h1>Créez un compte</h1>
-                <p>
-                    <label for="nom">Nom<span class="main__inscription--form--asterisk">*</span></label>
-                    <input type="text" name="nom" id="nom" size="30" maxlength="30" required />
-                </p>
-                <p>
-                    <label for="prenom">Prénom<span class="main__inscription--form--asterisk">*</span></label>
-                    <input type="text" name="prenom" id="prenom" size="30" maxlength="30" required />
-                </p>
-                <p>
-                    <label for="mail">Email<span class="main__inscription--form--asterisk">*</span></label>
-                    <input type="email" name="mail" id="mail" size="50" maxlength="50" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$" required />
-                </p>
-                <p>
-                    <label for="pass">Mot de passe<span class="main__inscription--form--asterisk">*</span></label>
-                    <input type="password" name="pass" id="pass" size="40" maxlength="40" required />
-                </p>
-                <p>
-                    <label for="confirm_pass">Confirmer le mot de passe<span class="main__inscription--form--asterisk">*</span></label>
-                    <input type="password" name="confirm_pass" id="confirm_pass" size="40" maxlength="40" required />
-                </p>
-                <div class="main__inscription--form--group">
-                    <input class="main__inscription--form--group--button" type="submit" value="S'inscrire" />
-                    <input class="main__inscription--form--group--button" type="reset" value="Remise à zéro" />
-                </div>
-            </form>
-            <p class="main__inscription--textend">Vous avez déjà un compte ? <a href="connexion.html">Identifiez-vous !</a></p>
+            <div class="container">
+                <form class="main__inscription--form">
+                    <h1>Créez un compte</h1>
+                    <p>
+                        <label for="nom">Nom<span class="main__inscription--form--asterisk">*</span></label>
+                        <input type="text" name="nom" id="nom" size="30" maxlength="30" required />
+                    </p>
+                    <p>
+                        <label for="prenom">Prénom<span class="main__inscription--form--asterisk">*</span></label>
+                        <input type="text" name="prenom" id="prenom" size="30" maxlength="30" required />
+                    </p>
+                    <p>
+                        <label for="mail">Email<span class="main__inscription--form--asterisk">*</span></label>
+                        <input type="email" name="mail" id="mail" size="50" maxlength="50" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$" required />
+                    </p>
+                    <p>
+                        <label for="pass">Mot de passe<span class="main__inscription--form--asterisk">*</span></label>
+                        <input type="password" name="pass" id="pass" size="40" maxlength="40" required />
+                    </p>
+                    <p>
+                        <label for="confirm_pass">Confirmer le mot de passe<span class="main__inscription--form--asterisk">*</span></label>
+                        <input type="password" name="confirm_pass" id="confirm_pass" size="40" maxlength="40" required />
+                    </p>
+                    <div class="main__inscription--form--group">
+                        <input class="main__inscription--form--group--button" type="submit" value="S'inscrire" />
+                        <input class="main__inscription--form--group--button" type="reset" value="Remise à zéro" />
+                    </div>
+                </form>
+                <p class="main__inscription--textend">Vous avez déjà un compte ? <a href="connexion.html">Identifiez-vous !</a></p>
+            </div>
         </main>
         <footer>
-            <ul>
-                <li>
-                    <a href="a_propos.html">À propos</a>
-                </li>
-                <li>
-                    <a href="mentions_legales.html">Mentions légales</a>
-                </li>
-                <li>
-                    <a href="support.html">Support</a>
-                </li>
-            </ul>
+            <div class="container">
+                <ul>
+                    <li>
+                        <a href="a_propos.html" class="animation__link">À propos</a>
+                    </li>
+                    <li>
+                        <a href="mentions_legales.html" class="animation__link">Mentions légales</a>
+                    </li>
+                    <li>
+                        <a href="support.html" class="animation__link">Support</a>
+                    </li>
+                </ul>
+            </div>
         </footer>
     </body>
 </html>
