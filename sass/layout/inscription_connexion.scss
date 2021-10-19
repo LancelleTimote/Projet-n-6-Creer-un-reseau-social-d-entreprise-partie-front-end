@@ -1,9 +1,9 @@
-.main__inscription, .main__inscription--form p, .main__inscription .container {
+.main__inscription__connexion, .main__inscription__connexion--form p, .main__inscription__connexion .container {
     display: flex;
     flex-direction: column;
 }
 
-.main__inscription {
+.main__inscription__connexion {
     min-height: 100vh;
     justify-content: center;
     align-items: center;
@@ -29,9 +29,9 @@
                 border: none;
                 border-bottom: 2px solid $color-hyperlink-border-text_main;
             }
-        }
-        label {
-            margin-bottom: 15px;
+            label {
+                margin-bottom: 15px;
+            }
         }
         &--asterisk {
             color: $color-asterisk;

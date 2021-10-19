@@ -13,7 +13,6 @@ body a {
   text-decoration: none;
 }
 body a:hover {
-  display: inline-block;
   color: #274880;
 }
 body p {
@@ -23,17 +22,19 @@ body ul {
   list-style: none;
   padding: 0;
 }
-body .animation__link {
-  transition: transform 450ms;
-}
-body .animation__link:hover {
-  transform: scale(1.3);
-  /* (130% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
 @media (min-width: 1440px) {
   body .container {
     width: 1440px;
   }
+}
+
+.animation__link {
+  transition: transform 450ms;
+}
+.animation__link:hover {
+  display: inline-block;
+  transform: scale(1.3);
+  /* (130% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 .main__index {
@@ -48,51 +49,51 @@ body .animation__link:hover {
   margin-bottom: 20px;
 }
 
-.main__inscription, .main__inscription--form p, .main__inscription .container {
+.main__inscription__connexion, .main__inscription__connexion--form p, .main__inscription__connexion .container {
   display: flex;
   flex-direction: column;
 }
 
-.main__inscription {
+.main__inscription__connexion {
   min-height: 100vh;
   justify-content: center;
   align-items: center;
 }
-.main__inscription .container {
+.main__inscription__connexion .container {
   align-items: center;
 }
-.main__inscription--textend {
+.main__inscription__connexion--textend {
   margin-top: 20px;
 }
-.main__inscription--form {
+.main__inscription__connexion--form {
   width: 500px;
   background-color: white;
   border: 5px solid #274880;
 }
-.main__inscription--form h1 {
+.main__inscription__connexion--form h1 {
   color: #274880;
   text-align: center;
   margin-bottom: 60px;
 }
-.main__inscription--form p {
+.main__inscription__connexion--form p {
   color: #6b6666;
   margin: 20px;
 }
-.main__inscription--form p input {
+.main__inscription__connexion--form p input {
   border: none;
   border-bottom: 2px solid #274880;
 }
-.main__inscription--form label {
+.main__inscription__connexion--form p label {
   margin-bottom: 15px;
 }
-.main__inscription--form--asterisk {
+.main__inscription__connexion--form--asterisk {
   color: #ff4242;
 }
-.main__inscription--form--group {
+.main__inscription__connexion--form--group {
   display: flex;
   justify-content: center;
 }
-.main__inscription--form--group--button {
+.main__inscription__connexion--form--group--button {
   width: 150px;
   height: 40px;
   margin: 0 20px 20px 20px;
