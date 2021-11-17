@@ -1,9 +1,13 @@
 body {
     font-family: Arial, Verdana, 'Times New Roman', Tahoma, sans-serif;
     margin: 0;
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
     main {
         background-image: url(../pictures/building_1.jpg);
         background-size: cover;
+        flex-grow:1;
     }
     p, a {
         color: $color-text-background_main;

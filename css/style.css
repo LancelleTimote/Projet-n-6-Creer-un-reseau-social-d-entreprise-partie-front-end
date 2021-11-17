@@ -1,10 +1,14 @@
 body {
   font-family: Arial, Verdana, "Times New Roman", Tahoma, sans-serif;
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 body main {
   background-image: url(../pictures/building_1.jpg);
   background-size: cover;
+  flex-grow: 1;
 }
 body p, body a {
   color: white;
@@ -38,7 +42,6 @@ body ul {
 }
 
 .main__index {
-  min-height: 100vh;
   font-size: 30px;
   text-align: center;
   display: flex;
@@ -55,7 +58,6 @@ body ul {
 }
 
 .main__inscription__connexion {
-  min-height: 100vh;
   justify-content: center;
   align-items: center;
 }
