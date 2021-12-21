@@ -1,40 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="css/style.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Primary Meta Tags -->
-        <title>Groupomania - Réseau social - Mentions légales</title>
-        <meta name="title" content="Groupomania - Réseau social - Mentions légales">
-        <meta name="description" content="Les mentions légales du réseau social de l'entreprise Groupomania.">
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://metatags.io/">
-        <meta property="og:title" content="Groupomania - Réseau social - Mentions légales">
-        <meta property="og:description" content="Les mentions légales du réseau social de l'entreprise Groupomania.">
-        <meta property="og:image" content="https://i.ibb.co/C6BcjPq/picture-metatags.png">
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="https://metatags.io/">
-        <meta property="twitter:title" content="Groupomania - Réseau social - Mentions légales">
-        <meta property="twitter:description" content="Les mentions légales du réseau social de l'entreprise Groupomania.">
-        <meta property="twitter:image" content="https://i.ibb.co/C6BcjPq/picture-metatags.png">
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <a href="index.html"><img src="pictures/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." class="animation__link"/></a>
-                <ul>
-                    <li>
-                        <a href="connexion.html" class="animation__link">Connexion</a>
-                    </li>
-                    <li>
-                        <a href="inscription.html" class="animation__link">Inscription</a>
-                    </li>
-                </ul>
-            </div>
-        </header>
+<template>
+    <div class="container__vue">
+        <Header/>
+        
         <main class="main__mentions">
             <div class="container">
                 <h1>Mentions Légales</h1>
@@ -95,20 +62,32 @@
                 <p>Tout litige en relation avec l’utilisation du site https://lancelletimote.github.io/TimoteLancelle_7_27092021_frontend/ est soumis au droit français. En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de .</p>
             </div>
         </main>
-        <footer>
-            <div class="container">
-                <ul>
-                    <li>
-                        <a href="a_propos.html" class="animation__link">À propos</a>
-                    </li>
-                    <li>
-                        <a href="mentions_legales.html" class="animation__link">Mentions légales</a>
-                    </li>
-                    <li>
-                        <a href="support.html" class="animation__link">Support</a>
-                    </li>
-                </ul>
-            </div>
-        </footer>
-    </body>
-</html>
+
+        <Footer/>
+    </div>
+</template>
+
+<script>
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
+
+export default {
+    name: 'Connection',
+    components: {
+        Header,
+        Footer,
+    }
+}
+</script>
+
+<style scoped lang="scss">
+    .main__mentions {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 25px;
+        h1, h2 {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+</style>

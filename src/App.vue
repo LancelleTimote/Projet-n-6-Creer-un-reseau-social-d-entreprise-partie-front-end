@@ -5,7 +5,6 @@
 </template>
 
 <style lang="scss">
-    //base.scss
     body {
 		margin:0;
         font-family: Arial, Verdana, 'Times New Roman', Tahoma, sans-serif;
@@ -30,10 +29,23 @@
             list-style: none;
             padding: 0;
         }
+        .container__vue {
+            display: flex;
+            flex-direction: column;
+            min-height:100vh;
+        }
         @media (min-width: 1440px) {
             .container {
                 width: 1440px;
             }
         }
     }
+    //animations.scss
+    .animation__link {
+    transition: transform 450ms;
+    &:hover {
+        display:inline-block;
+        transform: scale(1.3); /* (130% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+}
 </style>
