@@ -9,7 +9,7 @@
                     <p>Bienvenue sur votre réseau social d'entreprise</p>
                     <ul>
                         <li>
-                            <router-link to='/connection' class="animation__link">Connexion</router-link>
+                            <router-link to='/login' class="animation__link">Connexion</router-link>
                         </li>
                         <li>
                             <router-link to='/signup' class="animation__link">Inscription</router-link>

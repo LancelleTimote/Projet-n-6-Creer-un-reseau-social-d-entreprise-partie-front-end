@@ -4,7 +4,7 @@
             <router-link to="/" class="animation__link"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
             <ul>
                 <li>
-                    <router-link to='/connection' class="animation__link">Connexion</router-link>
+                    <router-link to='/login' class="animation__link">Connexion</router-link>
                 </li>
                 <li>
                     <router-link to='/signup' class="animation__link">Inscription</router-link>
