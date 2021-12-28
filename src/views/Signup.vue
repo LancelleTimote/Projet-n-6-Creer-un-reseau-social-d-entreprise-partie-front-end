@@ -4,15 +4,15 @@
         
         <main class="main__inscription__connexion">
             <div class="container">
-                <form class="main__inscription__connexion--form">
+                <form @submit.prevent="signup" class="main__inscription__connexion--form">
                     <h1>Créer un compte</h1>
                     <p>
                         <label for="lastName">Nom<span class="main__inscription__connexion--form--asterisk">*</span></label>
-                        <input type="text" v-model="lastName" name="lastName" id="lastName" size="50" maxlength="50" required />
+                        <input type="text" v-model="lastName" name="lastName" id="lastName" size="50" maxlength="100" required />
                     </p>
                     <p>
                         <label for="firstName">Prénom<span class="main__inscription__connexion--form--asterisk">*</span></label>
-                        <input type="text" v-model="firstName" name="firstName" id="firstName" size="50" maxlength="50" required />
+                        <input type="text" v-model="firstName" name="firstName" id="firstName" size="50" maxlength="100" required />
                     </p>
                     <p>
                         <label for="mail">Email<span class="main__inscription__connexion--form--asterisk">*</span></label>
@@ -62,7 +62,7 @@ export default {
     },
     created () {
         this.notyf = new Notyf({
-            duration: 3000,
+            duration: 4000,
             position: {
                 x: 'center',
                 y: 'bottom'
