@@ -4,15 +4,15 @@
         
         <main class="main__inscription__connexion">
             <div class="container">
-                <form class="main__inscription__connexion--form">
+                <form @submit.prevent="login" class="main__inscription__connexion--form">
                     <h1>Identifiez-vous</h1>
                     <p>
                         <label for="mail">Email</label>
-                        <input type="email" name="mail" id="mail" size="50" maxlength="50" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$" required />
+                        <input type="email" v-model="email" name="mail" id="mail" size="100" maxlength="255" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,255}$" required />
                     </p>
                     <p>
-                        <label for="pass">Mot de passe</label>
-                        <input type="password" name="pass" id="pass" size="40" maxlength="40" required />
+                        <label for="password">Mot de passe</label>
+                        <input type="password" v-model="password" name="password" id="password" size="40" maxlength="40" required />
                     </p>
                     <div class="main__inscription__connexion--form--group">
                         <input class="main__inscription__connexion--form--group--button" type="submit" value="Se connecter" />
@@ -29,12 +29,52 @@
 <script>
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
+import axios from 'axios'
+import { Notyf } from 'notyf'
+import 'notyf/notyf.min.css'
 
 export default {
     name: 'Login',
     components: {
         Header,
         Footer,
+    },
+    data() {
+        return {
+            email: '',
+            password: '',
+        }
+    },
+    created() {
+        this.notyf = new Notyf({
+            duration: 3000,
+            position: {
+                x: 'center',
+                y: 'bottom'
+            }
+        });
+    },
+    methods: {
+        // Permet de se connecter et de recharger la page sans que l'utilisateur soit déconnecté
+        login() {
+            axios.post('http://localhost:3000/api/user/login', {
+                email: this.email,
+                password: this.password,
+            })
+            .then(response => {
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('userId', response.data.userId);
+                localStorage.setItem('lastName', response.data.lastName);
+                localStorage.setItem('firstName', response.data.firstName);
+                localStorage.setItem('isAdmin', response.data.isAdmin);
+                localStorage.setItem('imageProfile', response.data.imageProfile);
+                this.$router.push('post');
+            })
+            .catch(error => {
+                const msgerror = error.response.data
+                this.notyf.error(msgerror.error)
+            })
+        }
     }
 }
 </script>
