@@ -1,34 +1,30 @@
 <template>
-    <footer>
+    <header>
         <nav class="container">
+            <router-link to="/post" class="animation__link"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
             <ul>
                 <li>
-                    <router-link to='/about' class="animation__link">À propos</router-link>
+                    <router-link to='/post' class="animation__link">Accueil</router-link>
                 </li>
                 <li>
-                    <router-link to='/legalnotice' class="animation__link">Mentions légales</router-link>
-                </li>
-                <li>
-                    <router-link to='/support' class="animation__link">Support</router-link>
+                    <router-link to='/profile' class="animation__link">Profil</router-link>
                 </li>
             </ul>
         </nav>
-    </footer>
+    </header>
 </template>
 
 <script>
     export default {
-        name: 'Footer',
+        name: 'HeaderConnect',
     }
 </script>
 
 
 <style scoped lang="scss">
-    footer {
-        border-top: 5px solid rgba(39, 72, 128, 1);
-        position: sticky;
-        bottom: 0;
-        height: auto;
+    header {
+        border-bottom: 5px solid rgba(39, 72, 128, 1);
+        height: 75px;
         background-color: rgba(160, 160, 160, 1);
         font-size: 20px;
         width: 100%;
@@ -37,11 +33,11 @@
         align-items: center;
         .container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             ul {
                 display: flex;
                 li {
-                    margin: 10px 35px;
+                    margin: 0 35px;
                 }
             }
         }

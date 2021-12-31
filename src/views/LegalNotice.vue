@@ -1,10 +1,9 @@
 <template>
     <div class="container__vue">
-        <Header/>
-        
-        <main class="main__mentions">
+        <component :is="header"></component>      
+        <main class="container__vue--mentions">
             <div class="container">
-                <h1>Mentions Légales</h1>
+                <h1>MENTIONS LÉGALES</h1>
                 <h2>1 - Édition du site</h2>
                 <p>En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site internet https://lancelletimote.github.io/TimoteLancelle_7_27092021_frontend/ l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi:</p>
 
@@ -62,26 +61,36 @@
                 <p>Tout litige en relation avec l’utilisation du site https://lancelletimote.github.io/TimoteLancelle_7_27092021_frontend/ est soumis au droit français. En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de .</p>
             </div>
         </main>
-
         <Footer/>
     </div>
 </template>
 
 <script>
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
+    import Header from '../components/Header.vue'
+    import Footer from '../components/Footer.vue'
+    import HeaderConnect from '../components/HeaderConnect.vue'
 
-export default {
-    name: 'Connection',
-    components: {
-        Header,
-        Footer,
+    export default {
+        name: 'LegalNotice',
+        components: {
+            Header,
+            HeaderConnect,
+            Footer,
+        },
+        computed: {
+            header() {
+                if (!localStorage.getItem('token')) {
+                    return Header
+                } else {
+                    return HeaderConnect
+                }
+            }
+        }
     }
-}
 </script>
 
 <style scoped lang="scss">
-    .main__mentions {
+    .container__vue--mentions {
         text-align: center;
         display: flex;
         justify-content: center;

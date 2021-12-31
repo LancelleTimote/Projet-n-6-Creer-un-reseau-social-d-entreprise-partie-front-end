@@ -1,6 +1,6 @@
 <template>
     <header>
-        <div class="container">
+        <nav class="container">
             <router-link to="/" class="animation__link"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
             <ul>
                 <li>
@@ -10,7 +10,7 @@
                     <router-link to='/signup' class="animation__link">Inscription</router-link>
                 </li>
             </ul>
-        </div>
+        </nav>
     </header>
 </template>
 

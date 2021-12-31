@@ -1,7 +1,6 @@
 <template>
     <div class="container__vue">
-        <Header/>
-        
+        <Header/>        
         <main class="main__index">
             <div class="container">
                 <section>
@@ -18,7 +17,6 @@
                 </section>
             </div>
         </main>
-
         <Footer/>
     </div>
 </template>
