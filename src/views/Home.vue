@@ -35,14 +35,22 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    li {
+        margin-bottom: 20px;
+    }
     .main__index {
         font-size: 30px;
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
-        li {
-            margin-bottom: 20px;
+    }
+    @media (max-width: 576px) {
+        img {
+            height: 150px;
+        }
+        .main__index {
+            font-size: 25px;
         }
     }
 </style>

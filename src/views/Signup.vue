@@ -90,10 +90,9 @@
 
 <style scoped lang="scss">
     .container__vue--signup, .container__vue--signup--form p, .container__vue--signup .container {
-    display: flex;
-    flex-direction: column;
+        display: flex;
+        flex-direction: column;
     }
-
     .container__vue--signup {
         justify-content: center;
         align-items: center;
@@ -138,6 +137,14 @@
                     border-radius: 5px;
                 }
             }
+        }
+    }
+    @media (max-width: 576px) {
+        .container__vue--signup--form {
+            width: 275px;
+        }
+        .container__vue--signup--textend {
+            font-size: 12px;
         }
     }
 </style>

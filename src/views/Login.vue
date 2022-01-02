@@ -79,10 +79,9 @@
 
 <style scoped lang="scss">
     .container__vue--login, .container__vue--login--form p, .container__vue--login .container {
-    display: flex;
-    flex-direction: column;
+        display: flex;
+        flex-direction: column;
     }
-
     .container__vue--login {
         justify-content: center;
         align-items: center;
@@ -127,6 +126,14 @@
                     border-radius: 5px;
                 }
             }
+        }
+    }
+    @media (max-width: 576px) {
+        .container__vue--login--form {
+            width: 275px;
+        }
+        .container__vue--login--textend {
+            font-size: 12px;
         }
     }
 </style>

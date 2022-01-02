@@ -58,7 +58,7 @@
                 <p>Pour plus d'informations sur la façon dont nous faisons usage des cookies, lisez notre Politique de Confidentialité.</p>
 
                 <h2>6 - Droit applicable et attribution de juridiction.</h2>
-                <p>Tout litige en relation avec l’utilisation du site https://lancelletimote.github.io/TimoteLancelle_7_27092021_frontend/ est soumis au droit français. En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de .</p>
+                <p>Tout litige en relation avec l’utilisation du site https://lancelletimote.github.io/TimoteLancelle_7_27092021_frontend/ est soumis au droit français. En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de ...</p>
             </div>
         </main>
         <Footer/>
@@ -90,13 +90,24 @@
 </script>
 
 <style scoped lang="scss">
+    h1, h2 {
+        color: rgba(255, 255, 255, 1);
+    }
     .container__vue--mentions {
         text-align: center;
         display: flex;
         justify-content: center;
         padding-bottom: 25px;
-        h1, h2 {
-            color: rgba(255, 255, 255, 1);
+    }
+    @media (max-width: 576px) {
+        h1 {
+            font-size: 25px;
+        }
+        h2 {
+            font-size: 20px;
+        }
+        p {
+            font-size: 10px;
         }
     }
 </style>

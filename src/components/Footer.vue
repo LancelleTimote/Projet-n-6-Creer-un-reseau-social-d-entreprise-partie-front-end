@@ -35,19 +35,30 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        ul {
+            display: flex;
+        }
+        li {
+            margin: 10px 35px;
+        }
         .container {
             display: flex;
             justify-content: center;
-            ul {
-                display: flex;
-                li {
-                    margin: 10px 35px;
-                }
-            }
         }
         @media (max-width: 1440px) {
             .container {
                 width: 100%;
+            }
+        }
+        @media (max-width: 576px) {
+            ul {
+                margin: 0;
+                flex-direction: column;
+            }
+            .container {
+                justify-content: center;
+                flex-direction: column;
+                text-align: center;
             }
         }
     }

@@ -48,21 +48,29 @@
 </script>
 
 <style scoped lang="scss">
+    h1, h2, li {
+        color: rgba(255, 255, 255, 1);
+    }
+    li {
+        margin-bottom: 20px;
+    }
+    h2 {
+        font-size: 2em;
+        margin-top: 50px;
+    }
     .container__vue--support {
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
         padding-bottom: 25px;
-        h1, h2, li {
-            color: rgba(255, 255, 255, 1);
+    }
+    @media (max-width: 576px) {
+        h1, h2 {
+            font-size: 25px;
         }
         li {
-            margin-bottom: 20px;
-        }
-        h2 {
-            font-size: 2em;
-            margin-top: 50px;
+            font-size: 10px;
         }
     }
 </style>
