@@ -14,7 +14,7 @@
                         <input type="password" v-model="password" name="password" id="password" size="40" maxlength="40" required />
                     </p>
                     <div class="container__vue--login--form--group">
-                        <input class="container__vue--login--form--group--button" type="submit" value="Se connecter" />
+                        <button class="container__vue--login--form--group--button" type="submit">Se connecter</button>
                     </div>
                 </form>
                 <p class="container__vue--login--textend">Vous n'avez pas encore de compte ? <router-link to='/signup'>Créez un compte !</router-link></p>
@@ -55,7 +55,7 @@
         methods: {
             // Permet de se connecter et de recharger la page sans que l'utilisateur soit déconnecté
             login() {
-                axios.post('http://localhost:3000/api/user/login', {
+                axios.post('http://localhost:3000/api/auth/login', {
                     email: this.email,
                     password: this.password,
                 })
@@ -64,8 +64,8 @@
                     localStorage.setItem('userId', response.data.userId);
                     localStorage.setItem('lastName', response.data.lastName);
                     localStorage.setItem('firstName', response.data.firstName);
-                    localStorage.setItem('isAdmin', response.data.isAdmin);
-                    localStorage.setItem('imageProfile', response.data.imageProfile);
+                    localStorage.setItem('admin', response.data.admin);
+                    localStorage.setItem('profileAvatar', response.data.profileAvatar);
                     this.$router.push('post');
                 })
                 .catch(error => {
@@ -93,7 +93,7 @@
         }
         &--form {
             width: 500px;
-            background-color: rgba(255, 255, 255, 1);;
+            background-color: rgba(255, 255, 255, 1);
             border: 5px solid rgba(39, 72, 128, 1);
             h1 {
                 color: rgba(39, 72, 128, 1);

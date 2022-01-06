@@ -5,10 +5,10 @@
             <nav>
                 <ul>
                     <li>
-                        <router-link to='/post' class="animation__link">Accueil</router-link>
+                        <router-link to='/post' class="animation__link"><i class="fas fa-home"></i> Accueil</router-link>
                     </li>
                     <li>
-                        <router-link to='/profile' class="animation__link">Profil</router-link>
+                        <router-link to='/profile' class="animation__link"><i class="fas fa-user"></i> Profil</router-link>
                     </li>
                 </ul>
             </nav>
@@ -51,10 +51,10 @@
         @media (max-width: 576px) {
             ul {
                 margin: 0;
-                flex-direction: column;
+                justify-content: center;
             }
             li {
-                margin: 0 0 10px 0;
+                margin: 0 10px 10px 10px;
             }
             .container {
                 justify-content: center;
