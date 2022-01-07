@@ -2,7 +2,7 @@
     <div class="container__vue">
         <HeaderConnect/>
         <main class="container__vue--profil">
-            <h1>Bienvenue sur votre profil {{ user.lastName }} {{ user.firstName }} !</h1>
+            <h1>Bienvenue sur votre profil {{ user.firstName }} !</h1>
             <ProfileAvatar :src="user.profileAvatar"/>
             <button @click="uploadFile" type="button" class="container__vue--profil--button--edit--avatar"><i class="fas fa-edit"></i> Modifier la photo de profil</button>
             <input type="file" ref="fileUpload" @change="onFileSelected"  accept="image/*" id="file-input" aria-label="Modifier la photo de profil">
@@ -10,7 +10,7 @@
                 <li>Nom : {{ user.lastName }}</li>
                 <li>Prénom : {{ user.firstName }}</li>
                 <li>Email : {{ user.email }}</li>
-                <li>Compte crée le : {{ user.createdAt }}</li>
+                <li>Compte crée le : {{ user.createdAt | moment("DD.MM.YYYY") }}</li>
                 <li v-if="user.admin == false">Rôle : Utilisateur</li>
                 <li v-else>Rôle : Modérateur</li>
             </ul>
@@ -49,12 +49,12 @@
 		created() {
 			this.displayProfile();  
 			this.notyf = new Notyf({
-			duration: 3000,
-			position: {
-				x: 'center',
-				y: 'top'
-			}
-			}); 
+				duration: 3000,
+				position: {
+					x: 'center',
+					y: 'top'
+				}
+			});
 		},
 		methods: {
 			// Permet d'afficher les informations de profil
@@ -75,8 +75,7 @@
 					this.notyf.error(msgerror.error)
 				})
 			},
-
-			// Permet de modifier la photo de profil
+			//permet de modifier l'image de profil
 			uploadFile () {
 				this.$refs.fileUpload.click()
 			},
@@ -104,11 +103,10 @@
 					this.notyf.error(msgerror.error)
 				})
 			},
-
-			// Permet d'afficher la boîte modale pour la suppression du compte
+			//permet d'afficher le message pour la suppression du compte
 			displayDelete() {
 				this.revele = !this.revele
-			}
+			},
 		}
     }
 </script>

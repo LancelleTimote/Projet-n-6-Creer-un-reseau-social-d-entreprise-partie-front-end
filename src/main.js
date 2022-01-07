@@ -3,6 +3,7 @@ import Vuelidate from 'vuelidate';
 import App from './App.vue'
 import router from './router'
 
+Vue.use(require('vue-moment'));
 Vue.use(Vuelidate);
 Vue.config.productionTip = false
 
