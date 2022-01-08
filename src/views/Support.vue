@@ -1,6 +1,6 @@
 <template>
     <div class="container__vue">
-        <component :is="header"></component>      
+        <Header/>     
         <main class="container__vue--support">
             <div class="container">
                 <img src="../assets/support.png" alt="Image support" title="C'est une image montrant une personne avec un casque, entouré de logos en lien avec le support." />
@@ -26,24 +26,13 @@
 <script>
     import Header from '../components/Header.vue'
     import Footer from '../components/Footer.vue'
-    import HeaderConnect from '../components/HeaderConnect.vue'
 
     export default {
         name: 'Support',
         components: {
             Header,
-            HeaderConnect,
             Footer,
         },
-        computed: {
-            header() {
-                if (!localStorage.getItem('token')) {
-                    return Header
-                } else {
-                    return HeaderConnect
-                }
-            }
-        }
     }
 </script>
 

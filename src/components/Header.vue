@@ -1,6 +1,6 @@
 <template>
     <header>
-        <div class="container">
+        <div v-if="token == null" class="container">
             <router-link to="/" class="animation__link"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
             <nav>
                 <ul>
@@ -13,12 +13,30 @@
                 </ul>
             </nav>
         </div>
+        <div v-else class="container">
+            <router-link to="/post" class="animation__link"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
+            <nav>
+                <ul>
+                    <li>
+                        <router-link to='/post' class="animation__link"><i class="fas fa-home"></i> Accueil</router-link>
+                    </li>
+                    <li>
+                        <router-link to='/profile' class="animation__link"><i class="fas fa-user"></i> Profil</router-link>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 </template>
 
 <script>
     export default {
         name: 'Header',
+        data() {
+            return {
+                token: localStorage.getItem('token')
+            }
+        },
     }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="container__vue">
-        <HeaderConnect/>
+        <Header/>
         <main class="container__vue--profil">
             <h1>Bienvenue sur votre profil {{ user.firstName }} !</h1>
             <ProfileAvatar :src="user.profileAvatar"/>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import HeaderConnect from '../components/HeaderConnect.vue'
+    import Header from '../components/Header.vue'
     import Footer from '../components/Footer.vue'
     import axios from 'axios'
     import { Notyf } from 'notyf'
@@ -34,7 +34,7 @@
     export default {
         name: 'Profile',
         components: {
-            HeaderConnect,
+            Header,
             Footer,
             ProfileAvatar,
             DeleteAccount,

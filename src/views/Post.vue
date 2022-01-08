@@ -1,6 +1,6 @@
 <template>
     <div class="container__vue">
-        <HeaderConnect/>
+        <Header/>
         <main class="container__vue--post">
             <div class="container__vue--post--newPost">
                 <form @submit.prevent="createPost" aria-label="Nouveau message">
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import HeaderConnect from '../components/HeaderConnect.vue'
+    import Header from '../components/Header.vue'
     import Footer from '../components/Footer.vue'
     // import axios from 'axios'
     // import { Notyf } from 'notyf'
@@ -24,7 +24,7 @@
     export default {
         name: 'Post',
         components: {
-            HeaderConnect,
+            Header,
             Footer,
         }
     }

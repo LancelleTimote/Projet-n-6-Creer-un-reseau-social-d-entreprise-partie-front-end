@@ -1,6 +1,6 @@
 <template>
     <div class="container__vue">
-        <component :is="header"></component>      
+        <Header/>    
         <main class="container__vue--mentions">
             <div class="container">
                 <h1>MENTIONS LÉGALES</h1>
@@ -68,24 +68,13 @@
 <script>
     import Header from '../components/Header.vue'
     import Footer from '../components/Footer.vue'
-    import HeaderConnect from '../components/HeaderConnect.vue'
 
     export default {
         name: 'LegalNotice',
         components: {
             Header,
-            HeaderConnect,
             Footer,
         },
-        computed: {
-            header() {
-                if (!localStorage.getItem('token')) {
-                    return Header
-                } else {
-                    return HeaderConnect
-                }
-            }
-        }
     }
 </script>
 
