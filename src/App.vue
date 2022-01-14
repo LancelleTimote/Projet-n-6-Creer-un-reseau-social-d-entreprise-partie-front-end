@@ -29,6 +29,9 @@
             list-style: none;
             padding: 0;
         }
+        button {
+            cursor: pointer;
+        }
         .container__vue {
             display: flex;
             flex-direction: column;
@@ -40,11 +43,11 @@
             }
         }
     }
-    .animation__link {
-    transition: transform 450ms;
-    &:hover {
-        display:inline-block;
-        transform: scale(1.3); /* (130% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    .animation__zoom {
+        transition: transform 450ms;
+        &:hover {
+            display:inline-block;
+            transform: scale(1.3); /*(130% zoom - si le zoom devient trop important il sort du viewport*/ 
+        }
     }
-}
 </style>

@@ -34,8 +34,8 @@
                         </div>
                     </div>
                     <div class="container__vue--signup--form--group">
-                        <button class="container__vue--signup--form--group--button" type="submit"><i class="fas fa-check-circle"></i> S'inscrire</button>
-                        <button class="container__vue--signup--form--group--button" type="reset"><i class="fas fa-times-circle"></i> Annuler</button>
+                        <button class="container__vue--signup--form--group--button animation__zoom" type="submit"><i class="fas fa-check-circle"></i> S'inscrire</button>
+                        <button class="container__vue--signup--form--group--button animation__zoom" type="reset"><i class="fas fa-times-circle"></i> Annuler</button>
                     </div>
                 </form>
                 <p class="container__vue--signup--textend">Vous avez déjà un compte ? <router-link to='/login'>Identifiez-vous !</router-link></p>
@@ -48,6 +48,7 @@
 <script>
     import Header from '../components/Header.vue'
     import Footer from '../components/Footer.vue'
+    
     import axios from 'axios'
     import { Notyf } from 'notyf'
     import 'notyf/notyf.min.css'

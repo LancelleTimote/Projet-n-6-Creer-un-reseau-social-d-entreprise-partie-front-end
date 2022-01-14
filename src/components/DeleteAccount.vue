@@ -59,6 +59,7 @@
         align-items: center;
         width: 40em;
         height: 17em;
+        margin-bottom: 30px;
         button {
             height: 40px;
             background-color: rgba(190, 209, 243, 1);
@@ -79,6 +80,18 @@
         &--button--delete {
             width: 250px;
             margin-bottom: 25px;
+        }
+    }
+    @media (max-width: 576px) {
+        .container__delete {
+            width: 275px;
+            height: 18em;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        p {
+            font-size: 10px;
         }
     }
 </style>

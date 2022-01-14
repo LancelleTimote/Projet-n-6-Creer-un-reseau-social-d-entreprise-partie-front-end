@@ -14,7 +14,7 @@
                         <input type="password" v-model="password" name="password" id="password" size="40" maxlength="40" required />
                     </p>
                     <div class="container__vue--login--form--group">
-                        <button class="container__vue--login--form--group--button" type="submit">Se connecter</button>
+                        <button class="container__vue--login--form--group--button animation__zoom" type="submit">Se connecter</button>
                     </div>
                 </form>
                 <p class="container__vue--login--textend">Vous n'avez pas encore de compte ? <router-link to='/signup'>Créez un compte !</router-link></p>
@@ -27,6 +27,7 @@
 <script>
     import Header from '../components/Header.vue'
     import Footer from '../components/Footer.vue'
+    
     import axios from 'axios'
     import { Notyf } from 'notyf'
     import 'notyf/notyf.min.css'
