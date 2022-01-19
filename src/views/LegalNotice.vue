@@ -82,11 +82,13 @@
     h1, h2 {
         color: rgba(255, 255, 255, 1);
     }
-    .container__vue--mentions {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        padding-bottom: 25px;
+    .container__vue {
+        &--mentions {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 25px;
+        }
     }
     @media (max-width: 576px) {
         h1 {

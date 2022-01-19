@@ -3,13 +3,13 @@
         <nav class="container">
             <ul>
                 <li>
-                    <router-link to='/about' class="animation__zoom">À propos</router-link>
+                    <router-link to='/about' class="animationZoomInline">À propos</router-link>
                 </li>
                 <li>
-                    <router-link to='/legalnotice' class="animation__zoom">Mentions légales</router-link>
+                    <router-link to='/legalnotice' class="animationZoomInline">Mentions légales</router-link>
                 </li>
                 <li>
-                    <router-link to='/support' class="animation__zoom">Support</router-link>
+                    <router-link to='/support' class="animationZoomInline">Support</router-link>
                 </li>
             </ul>
         </nav>

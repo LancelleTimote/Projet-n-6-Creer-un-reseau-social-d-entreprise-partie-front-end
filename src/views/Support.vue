@@ -47,12 +47,14 @@
         font-size: 2em;
         margin-top: 50px;
     }
-    .container__vue--support {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: 25px;
+    .container__vue {
+        &--support {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 25px;
+        }
     }
     @media (max-width: 576px) {
         h1, h2 {

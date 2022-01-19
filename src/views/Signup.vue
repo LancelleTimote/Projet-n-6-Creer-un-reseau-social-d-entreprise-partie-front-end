@@ -34,8 +34,8 @@
                         </div>
                     </div>
                     <div class="container__vue--signup--form--group">
-                        <button class="container__vue--signup--form--group--button animation__zoom" type="submit"><i class="fas fa-check-circle"></i> S'inscrire</button>
-                        <button class="container__vue--signup--form--group--button animation__zoom" type="reset"><i class="fas fa-times-circle"></i> Annuler</button>
+                        <button class="container__vue--signup--form--group--button animationZoomButton" type="submit"><i class="fas fa-check-circle"></i> S'inscrire</button>
+                        <button class="container__vue--signup--form--group--button animationZoomButton" type="reset"><i class="fas fa-times-circle"></i> Annuler</button>
                     </div>
                 </form>
                 <p class="container__vue--signup--textend">Vous avez déjà un compte ? <router-link to='/login'>Identifiez-vous !</router-link></p>
@@ -110,61 +110,63 @@
 </script>
 
 <style scoped lang="scss">
+    button {
+        width: 150px;
+        height: 40px;
+        margin: 0 20px 20px 20px;
+        background-color: rgba(190, 209, 243, 1);
+        border: none;
+        border-radius: 5px;
+    }
     .container__vue--signup, .container__vue--signup--form p, .container__vue--signup .container {
         display: flex;
         flex-direction: column;
     }
-    .container__vue--signup {
-        justify-content: center;
-        align-items: center;
-        .container {
+    .container__vue {
+        &--signup {
+            justify-content: center;
             align-items: center;
-        }
-        .invalid-feedback {
-            margin-top: 10px;
-        }
-        &--textend {
-            margin: 20px 0;
-        }
-        &--form {
-            margin-top: 20px;
-            width: 500px;
-            background-color: rgba(255, 255, 255, 1);
-            border: 5px solid rgba(39, 72, 128, 1);
-            h1, i {
-                color: rgba(39, 72, 128, 1);
+            .container {
+                align-items: center;
             }
-            h1 {
-                text-align: center;
-                margin-bottom: 60px;
+            .invalid-feedback {
+                margin-top: 10px;
             }
-            &--field {
-                display: flex;
-                flex-direction: column;
-                color: rgba(107, 102, 102, 1);
-                margin: 20px;
-                input {
-                    border: none;
-                    border-bottom: 2px solid rgba(39, 72, 128, 1);
-                }
-                label {
-                    margin-bottom: 15px;
-                }
-                &--asterisk, .invalid-feedback {
-                    color: rgba(255, 66, 66, 1);
-                }
+            &--textend {
+                margin: 20px 0;
             }
-            &--group {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                &--button {
-                    width: 150px;
-                    height: 40px;
-                    margin: 0 20px 20px 20px;
-                    background-color: rgba(190, 209, 243, 1);
-                    border: 3px solid rgba(39, 72, 128, 1);;
-                    border-radius: 5px;
+            &--form {
+                margin-top: 20px;
+                width: 500px;
+                background-color: rgba(255, 255, 255, 1);
+                border: 5px solid rgba(39, 72, 128, 1);
+                h1, i {
+                    color: rgba(39, 72, 128, 1);
+                }
+                h1 {
+                    text-align: center;
+                    margin-bottom: 60px;
+                }
+                &--field {
+                    display: flex;
+                    flex-direction: column;
+                    color: rgba(107, 102, 102, 1);
+                    margin: 20px;
+                    input {
+                        border: none;
+                        border-bottom: 2px solid rgba(39, 72, 128, 1);
+                    }
+                    label {
+                        margin-bottom: 15px;
+                    }
+                    &--asterisk, .invalid-feedback {
+                        color: rgba(255, 66, 66, 1);
+                    }
+                }
+                &--group {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
                 }
             }
         }

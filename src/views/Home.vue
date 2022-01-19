@@ -1,17 +1,17 @@
 <template>
     <div class="container__vue">
         <Header/>        
-        <main class="main__index">
+        <main class="container__vue--mainIndex">
             <div class="container">
                 <section>
                     <p><img src="../assets/logo_white_home.png" alt="Logo de l'entreprise Groupomania" title="C'est un logo de l'entreprise Groupomania."/></p>
                     <p>Bienvenue sur votre réseau social d'entreprise</p>
                     <ul>
                         <li>
-                            <router-link to='/login' class="animation__zoom">Connexion</router-link>
+                            <router-link to='/login' class="animationZoomInline">Connexion</router-link>
                         </li>
                         <li>
-                            <router-link to='/signup' class="animation__zoom">Inscription</router-link>
+                            <router-link to='/signup' class="animationZoomInline">Inscription</router-link>
                         </li>
                     </ul>
                 </section>
@@ -38,19 +38,23 @@ export default {
     li {
         margin-bottom: 20px;
     }
-    .main__index {
-        font-size: 30px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .container__vue {
+        &--mainIndex {
+            font-size: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
     @media (max-width: 576px) {
         img {
             height: 150px;
         }
-        .main__index {
-            font-size: 25px;
+        .container__vue {
+            &--mainIndex {
+                font-size: 25px;
+            }
         }
     }
 </style>

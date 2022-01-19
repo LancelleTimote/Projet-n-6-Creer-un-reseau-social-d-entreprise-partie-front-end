@@ -1,30 +1,30 @@
 <template>
     <header>
         <div v-if="token === null" class="container">
-            <router-link to="/" class="animation__zoom"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
+            <router-link to="/" class="animationZoomImg"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
             <nav>
                 <ul>
                     <li>
-                        <router-link to='/login' class="animation__zoom">Connexion</router-link>
+                        <router-link to='/login' class="animationZoomInline">Connexion</router-link>
                     </li>
                     <li>
-                        <router-link to='/signup' class="animation__zoom">Inscription</router-link>
+                        <router-link to='/signup' class="animationZoomInline">Inscription</router-link>
                     </li>
                 </ul>
             </nav>
         </div>
         <div v-else class="container">
-            <router-link to="/post" class="animation__zoom"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
+            <router-link to="/post" class="animationZoomImg"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
             <nav>
                 <ul>
                     <li>
-                        <router-link to='/post' class="animation__zoom"><i class="fas fa-home"></i> Accueil</router-link>
+                        <router-link to='/post' class="animationZoomInline"><i class="fas fa-home"></i> Accueil</router-link>
                     </li>
                     <li>
-                        <router-link to='/profile' class="animation__zoom"><i class="fas fa-user"></i> Profil</router-link>
+                        <router-link to='/profile' class="animationZoomInline"><i class="fas fa-user"></i> Profil</router-link>
                     </li>
                     <li>
-                        <i @click="Logout()" class="fas fa-power-off animation__zoom container--logout"></i>
+                        <i @click="Logout()" class="fas fa-power-off animationZoomInline container--logout"></i>
                     </li>
                 </ul>
             </nav>

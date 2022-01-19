@@ -14,7 +14,7 @@
                         <input type="password" v-model="password" name="password" id="password" size="40" maxlength="40" required />
                     </p>
                     <div class="container__vue--login--form--group">
-                        <button class="container__vue--login--form--group--button animation__zoom" type="submit">Se connecter</button>
+                        <button class="container__vue--login--form--group--button animationZoomButton" type="submit">Se connecter</button>
                     </div>
                 </form>
                 <p class="container__vue--login--textend">Vous n'avez pas encore de compte ? <router-link to='/signup'>Créez un compte !</router-link></p>
@@ -79,52 +79,51 @@
 </script>
 
 <style scoped lang="scss">
+    button {
+        width: 150px;
+        height: 40px;
+        margin: 0 20px 20px 20px;
+        background-color: rgba(190, 209, 243, 1);
+        border: none;
+        border-radius: 5px;
+    }
     .container__vue--login, .container__vue--login--form p, .container__vue--login .container {
         display: flex;
         flex-direction: column;
     }
-    .container__vue--login {
-        justify-content: center;
-        align-items: center;
-        .container {
+    .container__vue {
+        &--login {
+            justify-content: center;
             align-items: center;
-        }
-        &--textend {
-            margin-top: 20px;
-        }
-        &--form {
-            width: 500px;
-            background-color: rgba(255, 255, 255, 1);
-            border: 5px solid rgba(39, 72, 128, 1);
-            h1 {
-                color: rgba(39, 72, 128, 1);
-                text-align: center;
-                margin-bottom: 60px;
+            .container {
+                align-items: center;
             }
-            p {
-                color: rgba(107, 102, 102, 1);
-                margin: 20px;
-                input {
-                    border: none;
-                    border-bottom: 2px solid rgba(39, 72, 128, 1);
+            &--textend {
+                margin-top: 20px;
+            }
+            &--form {
+                width: 500px;
+                background-color: rgba(255, 255, 255, 1);
+                border: 5px solid rgba(39, 72, 128, 1);
+                h1 {
+                    color: rgba(39, 72, 128, 1);
+                    text-align: center;
+                    margin-bottom: 60px;
                 }
-                label {
-                    margin-bottom: 15px;
+                p {
+                    color: rgba(107, 102, 102, 1);
+                    margin: 20px;
+                    input {
+                        border: none;
+                        border-bottom: 2px solid rgba(39, 72, 128, 1);
+                    }
+                    label {
+                        margin-bottom: 15px;
+                    }
                 }
-            }
-            &--asterisk {
-                color: rgba(255, 66, 66, 1);
-            }
-            &--group {
-                display: flex;
-                justify-content: center;
-                &--button {
-                    width: 150px;
-                    height: 40px;
-                    margin: 0 20px 20px 20px;
-                    background-color: rgba(190, 209, 243, 1);
-                    border: 3px solid rgba(39, 72, 128, 1);;
-                    border-radius: 5px;
+                &--group {
+                    display: flex;
+                    justify-content: center;
                 }
             }
         }

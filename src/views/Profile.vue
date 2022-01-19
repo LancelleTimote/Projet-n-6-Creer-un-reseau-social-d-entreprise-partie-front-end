@@ -1,11 +1,11 @@
 <template>
     <div class="container__vue">
         <Header/>
-        <main class="container__vue--profil">
+        <main class="container__vue--profile">
             <h1>Bienvenue sur votre profil {{ user.firstName }} !</h1>
             <ProfileAvatar :src="user.profileAvatar"/>
             <input type="file" name="file" ref="fileUpload" @change="onFileSelected"  accept="image/*" id="file">
-			<label for="file" class="animation__zoom">
+			<label for="file" class="animationZoomButton">
 				Choisir une nouvelle image de profil
 				<p class="file-name"></p>
 			</label>
@@ -17,8 +17,8 @@
                 <li v-if="user.admin == false">Rôle : Utilisateur</li>
                 <li v-else>Rôle : Modérateur</li>
             </ul>
-            <button @click="modifyProfile" class="animation__zoom"><i class="fas fa-check-circle"></i> Enregister les modifications</button>
-			<button v-on:click="displayDelete" class="container__vue--profil--button--delete animation__zoom"><i class="far fa-trash-alt"></i> Supprimer le compte</button>
+            <button @click="modifyProfile" class="animationZoomButton"><i class="fas fa-check-circle"></i> Enregister les modifications</button>
+			<button v-on:click="displayDelete" class="container__vue--profile--button--delete animationZoomButton"><i class="far fa-trash-alt"></i> Supprimer le compte</button>
 			<DeleteAccount v-bind:revele="revele" v-bind:displayDelete='displayDelete'/>
         </main>
         <Footer/>
@@ -89,9 +89,6 @@
 				})
 			},
 			//modification de l'image de profil
-			uploadFile () {
-				this.$refs.fileUpload.click()
-			},
 			onFileSelected(event) {
 				this.profileAvatar = event.target.files[0]
 			},
@@ -139,28 +136,30 @@
 		width: 200px;
 		height: 40px;
 		background-color: rgba(190, 209, 243, 1);
-		border: 3px solid rgba(39, 72, 128, 1);
+		border: none;
 		border-radius: 5px;
 	}
 	input {
 		display: none;
 	}
 	label {
+		font-size: 14px;
 		margin-top: 10px;
 		cursor: pointer;
 		padding: 10px;
 		width: 200px;
 		background-color: rgba(190, 209, 243, 1);
-		border: 3px solid rgba(39, 72, 128, 1);
 		border-radius: 5px;
 	}
-	.container__vue--profil {
-		text-align: center;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		&--button--delete {
-			margin: 25px 0;
+	.container__vue {
+		&--profile {
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			&--button--delete {
+				margin: 25px 0;
+			}
 		}
 	}
 </style>
