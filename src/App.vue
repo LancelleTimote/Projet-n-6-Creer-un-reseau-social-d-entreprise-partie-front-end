@@ -43,13 +43,13 @@
             }
         }
     }
-    .animationZoomButton, .animationZoomInline, .animationZoomImg {
+    .animationZoomButton, .animationZoomInline, .animationZoomSimple {
         transition: transform 450ms;
     }
     .animationZoomInline:hover {
         display:inline-block;
     }
-    .animationZoomButton:hover, .animationZoomInline:hover, .animationZoomImg:hover {
+    .animationZoomButton:hover, .animationZoomInline:hover, .animationZoomSimple:hover {
         transform: scale(1.3); /*(130% zoom - si le zoom devient trop important il sort du viewport*/
     }
     .animationZoomButton:hover {

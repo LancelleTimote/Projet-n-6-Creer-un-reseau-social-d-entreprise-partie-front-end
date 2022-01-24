@@ -1,7 +1,7 @@
 <template>
     <header>
         <div v-if="token === null" class="container">
-            <router-link to="/" class="animationZoomImg"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
+            <router-link to="/" class="animationZoomSimple"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
             <nav>
                 <ul>
                     <li>
@@ -14,7 +14,7 @@
             </nav>
         </div>
         <div v-else class="container">
-            <router-link to="/post" class="animationZoomImg"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
+            <router-link to="/post" class="animationZoomSimple"><img src="../assets/logo_white_nav.png" alt="Petit logo de l'entreprise Groupomania" title="C'est un petit logo de l'entreprise Groupomania." /></router-link>
             <nav>
                 <ul>
                     <li>

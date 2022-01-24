@@ -13,8 +13,8 @@
                 <li>Nom : {{ user.lastName }}</li>
                 <li>Prénom : {{ user.firstName }}</li>
                 <li>Email : {{ user.email }}</li>
-                <li>Compte crée le : {{ user.createdAt | moment("DD.MM.YYYY") }}</li>
-                <li v-if="user.admin == false">Rôle : Utilisateur</li>
+                <li>Compte crée le : {{ user.createdAt | moment("DD.MM.YYYY à HH:mm") }}</li>
+                <li v-if="user.admin === false">Rôle : Utilisateur</li>
                 <li v-else>Rôle : Modérateur</li>
             </ul>
             <button @click="modifyProfile" class="animationZoomButton"><i class="fas fa-check-circle"></i> Enregister les modifications</button>
