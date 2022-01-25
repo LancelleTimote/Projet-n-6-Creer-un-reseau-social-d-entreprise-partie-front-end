@@ -243,7 +243,8 @@
                 const postId = id;
                 axios.post('http://localhost:3000/api/comment/' + postId, {
                     content: this.contentComment,
-                },{
+                },
+                {
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('token')
                     }
@@ -310,9 +311,6 @@
 </script>
 
 <style scoped lang="scss">
-    h1 {
-        color: rgba(255, 255, 255, 1);
-    }
     .container__vue--post--newPost, .container__vue--post--postsPublished--edit, .container__vue--post--postsPublished--formComment {
         textarea {
             height: 7em;
@@ -371,6 +369,9 @@
             background-color: rgba(107, 102, 102, 1);
         }
         &--post {
+            h1 {
+                color: rgba(255, 255, 255, 1);
+            }
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -393,7 +394,7 @@
                 }
                 &--imagePreview {
                     display: flex;
-                    margin: 10px auto 0 auto;
+                    margin: 20px auto 0 auto;
                     max-width: 38.5em;
                     max-height: 30em;
                 }
@@ -527,6 +528,134 @@
                         border: 2px solid rgba(107, 102, 102, 1);
                         border-radius: 5px;
                         padding: 10px;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 576px) {
+        .container__vue--post--newPost--blockButton, .container__vue--post--postsPublished--edit--blockButton {
+            margin-top: 10px;
+            button, label {
+                width: 75px;
+                font-size: 10px;
+            }
+            label {
+                height: 20px;
+                text-align: center;
+            }
+        }
+        .container__vue--post {
+            h1 {
+                font-size: 1.5em;
+            }
+            &--newPost {
+                width: 17em;
+                padding: 10px;
+                h2 {
+                    text-align: center;
+                    font-size: 20px;
+                    margin-bottom: 10px;
+                }
+                textarea {
+                    width: 19.5em;
+                }
+                &--imagePreview {
+                    margin-top: 10px;
+                    width: 16em;
+                }
+            }
+            &--postsPublished {
+                width: 17em;
+                padding: 10px;
+                margin-bottom: 10px;
+                &--header {
+                    flex-direction: column-reverse;
+                    &--icons--edit {
+                        margin-right: 0;
+                    }
+                    &--block {
+                        flex-direction: column;
+                        align-items: center;
+                        &--profileAvatar {
+                            width: 5em;
+                            height: 5em;
+                        }
+                        &--text {
+                            text-align: center;
+                            margin: 0;
+                            h2 {
+                                margin-top: 0;
+                                font-size: 20px;
+                            }
+                            p {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+                &--content {
+                    p {
+                        font-size: 12px;
+                    }
+                    img {
+                        width: 15em;
+                    }
+                }
+                &--edit {
+                    textarea {
+                        margin-top: 10px;
+                        width: 19.7em;
+                    }
+                }
+                &--buttonComment {
+                    margin-top: 10px;
+                    button {
+                        font-size: 10px;
+                        width: 95px;
+                        height: 30px;
+                    }
+                }
+                &--commentCount {
+                    margin-top: 10px;
+                    font-size: 12px;
+                }
+                &--formComment {
+                    button {
+                        font-size: 10px;
+                        width: 100px;
+                        height: 30px; 
+                    }
+                }
+                &--comments {
+                    margin: 10px 0;
+                    padding: 10px;
+                    &--header {
+                        flex-direction: column-reverse;
+                        &--block {
+                            flex-direction: column;
+                            align-items: center;
+                            img {
+                                width: 5em;
+                                height: 5em;
+                                margin: 0;
+                            }
+                            &--text {
+                                margin: 0;
+                                text-align: center;
+                                h2 {
+                                    margin-top: 10px;
+                                    font-size: 20px;
+                                }
+                                p {
+                                    margin-bottom: 10px;
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                    &--content {
+                        font-size: 12px;
                     }
                 }
             }
