@@ -15,7 +15,7 @@
                 <li>Email : {{ user.email }}</li>
                 <li>Compte crée le : {{ user.createdAt | moment("DD.MM.YYYY à HH:mm") }}</li>
                 <li v-if="user.admin === false">Rôle : Utilisateur</li>
-                <li v-else>Rôle : Modérateur</li>
+                <li v-else>Rôle : Administrateur</li>
             </ul>
             <button @click="modifyProfile" class="animationZoomButton"><i class="fas fa-check-circle"></i> Enregister les modifications</button>
 			<button v-on:click="displayDelete" class="container__vue--profile--button--delete animationZoomButton"><i class="far fa-trash-alt"></i> Supprimer le compte</button>

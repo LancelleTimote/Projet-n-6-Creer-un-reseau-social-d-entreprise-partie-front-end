@@ -23,14 +23,14 @@
                         <div class="container__vue--post--postsPublished--header--block">
                             <ProfileAvatar :src="post.User.profileAvatar" class="container__vue--post--postsPublished--header--block--profileAvatar"/>
                             <div class="container__vue--post--postsPublished--header--block--text">
-                                <h2>{{ post.User.lastName }} {{ post.User.firstName }}</h2>
-                                <p v-if="post.createdAt !== post.updatedAt">Publié le {{ post.createdAt | moment("DD.MM.YYYY à HH:mm") }}<br>(Dernière modification le {{ post.updatedAt | moment("DD.MM.YYYY à HH:mm") }})</p>
+                                <h2>{{ post.User.firstName }} {{ post.User.lastName }}</h2>
+                                <p v-if="post.createdAt !== post.updatedAt">Publié le {{ post.createdAt | moment("DD.MM.YYYY à HH:mm") }} (modifié)</p>
                                 <p v-else>Publié le {{ post.createdAt | moment("DD.MM.YYYY à HH:mm") }}</p>
                             </div>
                         </div>
                         <div class="container__vue--post--postsPublished--header--icons">
-                            <i v-if="userId == post.UserId || admin === 'true'" @click="displayModifyPost(post.id)" aria-label="Modifier le message" class="fas fa-edit animationZoomSimple container__vue--post--postsPublished--header--icons--edit"></i>
-                            <i v-if="userId == post.UserId || admin === 'true'" v-on:click="deletePost(post.id)" aria-label="Supprimer le message" class="fas fa-trash-alt animationZoomSimple"></i>
+                            <button v-if="userId == post.UserId || admin === 'true'" @click="displayModifyPost(post.id)" aria-label="Modifier le message" class="animationZoomSimple container__vue--post--postsPublished--header--icons--edit"><i class="fas fa-edit"></i></button>
+                            <button v-if="userId == post.UserId || admin === 'true'" v-on:click="deletePost(post.id)" aria-label="Supprimer le message" class="animationZoomSimple"><i class="fas fa-trash-alt"></i></button>
                         </div>
                     </div>
                     <div class="container__vue--post--postsPublished--content">
@@ -48,6 +48,34 @@
                                 </label>
                                 <button v-on:click="modifyPost(post.id)" aria-label="Enregistrer les modifications">Enregistrer</button>
                             </div>
+                        </div>
+                    </div>
+                    <div class="container__vue--post--postsPublished--buttonComment">
+                        <button @click="displayComment(post.id)" v-on:click="displayCreateComment(post.id)" aria-label="Commenter le message"><i class="far fa-comment-alt"></i>Commenter</button>
+                    </div>
+                    <div :formId="post.id" style="display:none" v-bind:showCreateComment="showCreateComment">
+                        <form @submit.prevent="createComment(post.id)" class="container__vue--post--postsPublished--formComment">
+                            <textarea v-model="contentComment" name="comment" id="comment" placeholder="Écrivez un commentaire..." aria-label="Rédiger un nouveau commentaire"/>              
+                            <button aria-label="Publier le commentaire">Publier</button>
+                        </form>
+                    </div>
+                    <span v-if="post.Comments.length > 1" class="container__vue--post--postsPublished--commentCount">{{ post.Comments.length }} commentaires</span>
+                    <span v-if="post.Comments.length > 0 && post.Comments.length === 1" class="container__vue--post--postsPublished--commentCount">{{ post.Comments.length }} commentaire</span>
+                    <div class="displayComment" v-for="comment in comments" :key="comment.commentId">
+                        <div v-bind:showComment="showComment" v-if="showComment && post.id == comment.postId" class="container__vue--post--postsPublished--comments">
+                            <div class="container__vue--post--postsPublished--comments--header">
+                                <div class="container__vue--post--postsPublished--comments--header--block">
+                                    <ProfileAvatar :src="comment.User.profileAvatar"/>
+                                    <div class="container__vue--post--postsPublished--comments--header--block--text">
+                                        <h2>{{comment.User.firstName}} {{ comment.User.lastName }}</h2>
+                                        <p>Publié le {{ comment.createdAt | moment("DD.MM.YYYY à HH:mm") }}</p>
+                                    </div>
+                                </div>
+                                <div class="container__vue--post--postsPublished--comments--header--button">
+                                    <button v-if="userId == comment.UserId || admin === 'true'" @click="deleteComment(comment.id)" class="animationZoomSimple"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                            <p class="container__vue--post--postsPublished--comments--content">{{ comment.content }}</p>
                         </div>
                     </div>
                 </div>
@@ -78,6 +106,7 @@
                 firstName: localStorage.getItem('firstName'),
                 profileAvatar: localStorage.getItem('profileAvatar'),
                 userId: localStorage.getItem('userId'),
+                admin: localStorage.getItem('admin'),
                 imagePost: '',
                 imagePreview: null,
                 imagePreviewModifyPost: null,
@@ -85,6 +114,10 @@
                 posts: [],
                 contentmodifyPost: '',
                 showInputModify: false,
+                comments: [],
+                contentComment: '',
+                showComment: false,
+                showCreateComment: false,
             }
         },
         created() {
@@ -98,7 +131,7 @@
             });
         },  
         methods: {
-            //création d'un nouveau message
+            //création d'un nouveau post
             onFileSelected(event) {
                 this.imagePost = event.target.files[0];
                 this.imagePreview = URL.createObjectURL(this.imagePost);
@@ -125,7 +158,7 @@
                     this.notyf.error(msgerror.error)
                 })
             },
-            //affichage des messages
+            //affichage des posts
             displayPost() {
                 axios.get('http://localhost:3000/api/post', {
                     headers: {
@@ -141,7 +174,7 @@
                     this.notyf.error(msgerror.error)
                 })
             },
-            //modification d'un message
+            //modification d'un post
             modifyPost(id) {
                 const postId = id;
                 const formData = new FormData();
@@ -161,7 +194,7 @@
                     this.notyf.error(msgerror.error)
                 })
             },
-            //affichage du champ pour la modification d'un message
+            //affichage du champ pour la modification d'un post
             displayModifyPost(id) {
                 const postId = id;
                 this.showInputModify === false
@@ -188,7 +221,7 @@
                     this.showInputModify = !this.showInputModify
                 }
             },
-            //suppression d'un message
+            //suppression d'un post
             deletePost(id) {
                 const postId = id;
                 axios.delete('http://localhost:3000/api/post/' + postId, {
@@ -205,6 +238,73 @@
                     this.notyf.error(msgerror.error)
                 })
             },
+            //création d'un nouveau commentaire
+            createComment(id) {
+                const postId = id;
+                axios.post('http://localhost:3000/api/comment/' + postId, {
+                    content: this.contentComment,
+                },{
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                .then(() => {
+                    window.location.reload()                    
+                })
+                .catch(error => {
+                    const msgerror = error.response.data
+                    this.notyf.error(msgerror.error)
+                })
+            },
+            //affichage du champ pour créer un nouveau commentaire
+            displayCreateComment(id) {
+                const postId = id;
+                this.showCreateComment == false
+                let form = document.querySelector('div[formId="'+id+'"]')
+                let formId = form.getAttribute('formId');
+                if(postId == formId && this.showCreateComment == false) {
+                    form.style.display = "block";
+                    this.showCreateComment = !this.showCreateComment
+                } else if(postId == formId && this.showCreateComment == true) {
+                    form.style.display = "none";
+                    this.showCreateComment = !this.showCreateComment
+                }
+            },
+            //affichage des commentaires d'un message
+            displayComment(id) {
+                this.showComment = !this.showComment
+                const postId = id;
+                axios.get('http://localhost:3000/api/comment/' + postId, {
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                .then(response => {
+                    this.comments = response.data;
+                })
+                .catch(error => {
+                    const msgerror = error.response.data
+                    this.notyf.error(msgerror.error)
+                })
+            },
+            //suppression d'un commentaire
+            deleteComment(id) {
+                const commentId = id;
+                axios.delete('http://localhost:3000/api/comment/' + commentId, {
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    }
+                })
+                .then(() => {
+                    window.location.reload()
+                })
+                .catch(error => {
+                    const msgerror = error.response.data
+                    this.notyf.error(msgerror.error)
+                })
+            }
         }
     }
 </script>
@@ -213,13 +313,22 @@
     h1 {
         color: rgba(255, 255, 255, 1);
     }
-    .container__vue--post--newPost, .container__vue--post--postsPublished--edit {
+    .container__vue--post--newPost, .container__vue--post--postsPublished--edit, .container__vue--post--postsPublished--formComment {
         textarea {
+            height: 7em;
             resize: none;
-            min-height: 7em;
-            height: auto;
             border: 3px solid rgba(39, 72, 128, 1);
             border-radius: 5px;
+        }
+    }
+    .container__vue--post--newPost--blockButton, .container__vue--post--postsPublished--edit--blockButton, .container__vue--post--postsPublished--buttonComment, .container__vue--post--postsPublished--formComment {
+        button {
+            background-color: rgba(190, 209, 243, 1);
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            border: 3px solid rgba(39, 72, 128, 1);
         }
     }
     .container__vue--post--newPost--blockButton, .container__vue--post--postsPublished--edit--blockButton {
@@ -229,12 +338,6 @@
         button {
             width: 100px;
             height: 40px;
-            background-color: rgba(190, 209, 243, 1);
-            border: none;
-            border-radius: 5px;
-        }
-        button:hover {
-            border: 3px solid rgba(39, 72, 128, 1);
         }
         input {
             display: none;
@@ -250,6 +353,16 @@
             height: 20px;
             background-color: rgba(190, 209, 243, 1);
             border-radius: 5px;
+        }
+    }
+    .container__vue--post--postsPublished--header--icons, .container__vue--post--postsPublished--comments--header--button {
+        button {
+            border: none;
+            background-color: rgba(255, 255, 255, 1);
+            i {
+                color: rgba(39, 72, 128, 1);
+                font-size: 15px;
+            }
         }
     }
     .container__vue {
@@ -321,10 +434,6 @@
                         }
                     }
                     &--icons {
-                        i {
-                            color: rgba(39, 72, 128, 1);
-                            cursor: pointer;
-                        }
                         &--edit {
                             margin-right: 20px;
                         }
@@ -356,6 +465,68 @@
                         margin: 20px auto;
                         max-width: 38.5em;
                         max-height: 30em;
+                    }
+                }
+                &--buttonComment {
+                    margin-top: 15px;
+                    button {
+                        width: 120px;
+                        height: 35px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    i {
+                        margin-right: 10px;
+                        color: rgba(39, 72, 128, 1);
+                    }
+                }
+                &--commentCount {
+                    margin-top: 20px;
+                }
+                &--formComment {
+                    margin-top: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    textarea {
+                        margin-bottom: 20px;
+                    }
+                    button {
+                        width: 120px;
+                        height: 35px;
+                    }
+                }
+                &--comments {
+                    border: 3px solid rgba(39, 72, 128, 1);
+                    border-radius: 5px;
+                    margin: 20px 0;
+                    padding: 20px;
+                    &--header {
+                        display: flex;
+                        justify-content: space-between;
+                        &--block {
+                            display: flex;
+                            img {
+                                width: 8em;
+                                height: 8em;
+                            }
+                            &--text {
+                                margin: 10px 0 0 20px;
+                                h2 {
+                                    margin-bottom: 10px;
+                                    color: rgba(72, 100, 147, 1);
+                                }
+                                p {
+                                    color: rgba(107, 102, 102, 1);
+                                    font-style: italic;
+                                }
+                            }
+                        }
+                    }
+                    &--content {
+                        border: 2px solid rgba(107, 102, 102, 1);
+                        border-radius: 5px;
+                        padding: 10px;
                     }
                 }
             }
