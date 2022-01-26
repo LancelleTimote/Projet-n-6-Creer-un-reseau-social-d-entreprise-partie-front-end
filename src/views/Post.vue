@@ -24,8 +24,7 @@
                             <ProfileAvatar :src="post.User.profileAvatar" class="container__vue--post--postsPublished--header--block--profileAvatar"/>
                             <div class="container__vue--post--postsPublished--header--block--text">
                                 <h2>{{ post.User.firstName }} {{ post.User.lastName }}</h2>
-                                <p v-if="post.createdAt !== post.updatedAt">Publié le {{ post.createdAt | moment("DD.MM.YYYY à HH:mm") }} (modifié)</p>
-                                <p v-else>Publié le {{ post.createdAt | moment("DD.MM.YYYY à HH:mm") }}</p>
+                                <p>Publié le {{ post.createdAt | moment("DD.MM.YYYY à HH:mm") }}</p>
                             </div>
                         </div>
                         <div class="container__vue--post--postsPublished--header--icons">
@@ -50,8 +49,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container__vue--post--postsPublished--buttonComment">
-                        <button @click="displayComment(post.id)" v-on:click="displayCreateComment(post.id)" aria-label="Commenter le message"><i class="far fa-comment-alt"></i>Commenter</button>
+                    <div class="container__vue--post--postsPublished--blockButtonPost">
+                        <Likes v-bind:post="post"/>   
+                        <div class="container__vue--post--postsPublished--blockButtonPost--buttonComment">
+                            <button @click="displayComment(post.id)" v-on:click="displayCreateComment(post.id)" aria-label="Commenter le message"><i class="far fa-comment-alt"></i>Commenter</button>
+                        </div>
                     </div>
                     <div :formId="post.id" style="display:none" v-bind:showCreateComment="showCreateComment">
                         <form @submit.prevent="createComment(post.id)" class="container__vue--post--postsPublished--formComment">
@@ -89,6 +91,7 @@
     import Header from '../components/Header.vue'
     import Footer from '../components/Footer.vue'
     import ProfileAvatar from '../components/ProfileAvatar.vue'
+    import Likes from '../components/Likes.vue'
 
     import axios from 'axios'
     import { Notyf } from 'notyf'
@@ -100,6 +103,7 @@
             Header,
             Footer,
             ProfileAvatar,
+            Likes,
         },
         data() {
             return {
@@ -118,6 +122,8 @@
                 contentComment: '',
                 showComment: false,
                 showCreateComment: false,
+                like: false,
+                postLikes: [],
             }
         },
         created() {
@@ -319,7 +325,7 @@
             border-radius: 5px;
         }
     }
-    .container__vue--post--newPost--blockButton, .container__vue--post--postsPublished--edit--blockButton, .container__vue--post--postsPublished--buttonComment, .container__vue--post--postsPublished--formComment {
+    .container__vue--post--newPost--blockButton, .container__vue--post--postsPublished--edit--blockButton, .container__vue--post--postsPublished--blockButtonPost--buttonComment, .container__vue--post--postsPublished--formComment {
         button {
             background-color: rgba(190, 209, 243, 1);
             border: none;
@@ -468,18 +474,32 @@
                         max-height: 30em;
                     }
                 }
-                &--buttonComment {
+                &--blockButtonPost {
+                    display: flex;
+                    justify-content: space-around;
                     margin-top: 15px;
-                    button {
+                    .buttonLike {
+                        background-color: rgba(190, 209, 243, 1);
+                        border: none;
+                        border-radius: 5px;
                         width: 120px;
                         height: 35px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
                     }
-                    i {
-                        margin-right: 10px;
-                        color: rgba(39, 72, 128, 1);
+                    .buttonLike:hover {
+                        border: 3px solid rgba(39, 72, 128, 1);
+                    }
+                    &--buttonComment {
+                        button {
+                            width: 120px;
+                            height: 35px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                        i {
+                            margin-right: 10px;
+                            color: rgba(39, 72, 128, 1);
+                        }
                     }
                 }
                 &--commentCount {
@@ -608,9 +628,8 @@
                         width: 19.7em;
                     }
                 }
-                &--buttonComment {
-                    margin-top: 10px;
-                    button {
+                &--blockButtonPost {
+                    &--buttonComment button, .buttonLike {
                         font-size: 10px;
                         width: 95px;
                         height: 30px;
