@@ -4,11 +4,11 @@
         <main class="container__vue--profile">
             <h1>Bienvenue sur votre profil {{ user.firstName }} !</h1>
             <ProfileAvatar :src="user.profileAvatar"/>
-            <input type="file" name="file" ref="fileUpload" @change="onFileSelected"  accept="image/*" id="file">
-			<label for="file" class="animationZoomButton">
+			<input type="file" name="profileAvatar" @change="onFileSelected"  accept="image/*" id="profileAvatar">
+			<label for="profileAvatar" class="animationZoomButton">
 				Choisir une nouvelle image de profil
-				<p class="file-name"></p>
 			</label>
+			<img class="container__vue--profile--profileAvatarPreview" v-if="profileAvatarPreview" :src="profileAvatarPreview" id="preview" alt="Prévisualisation de l'image ajoutée au message"/>
             <ul>
                 <li>Nom : {{ user.lastName }}</li>
                 <li>Prénom : {{ user.firstName }}</li>
@@ -45,9 +45,10 @@
         },
         data(){
 			return {
-			revele: false,
-			user: "",
-			profileAvatar: null,
+				revele: false,
+				user: "",
+				profileAvatar: null,
+				profileAvatarPreview: null,
 			}
 		},
 		created() {
@@ -60,17 +61,12 @@
 				}
 			});
 		},
-		mounted : function () {
-			const file = document.querySelector('#file');
-			file.addEventListener('change', (e) => {
-				const [file] = e.target.files;							//on obtient le fichier séléctionné
-				const { name: fileName, size } = file;					//on obtient le nom et la taille du fichier
-				const fileSize = (size / 1000).toFixed(2);				//on converti la taille de octet à ko
-				const fileNameAndSize = `${fileName} - ${fileSize}KB`;	//défini le contenu du texte
-				document.querySelector('.file-name').textContent = fileNameAndSize;
-			});
-		},
 		methods: {
+			//modification de l'image de profil
+            onFileSelected(event) {
+                this.profileAvatar = event.target.files[0];
+                this.profileAvatarPreview = URL.createObjectURL(this.profileAvatar);
+            },
 			//affichage des informations du compte
 			displayProfile() {
 				const userId = localStorage.getItem('userId');
@@ -88,10 +84,6 @@
 					this.notyf.error(msgerror.error)
 				})
 			},
-			//modification de l'image de profil
-			onFileSelected(event) {
-				this.profileAvatar = event.target.files[0]
-			},
 			modifyProfile() {
 				const userId = localStorage.getItem('userId');
 				const formData = new FormData();
@@ -103,8 +95,7 @@
 					}
 				})
 				.then(() => {
-					this.notyf.success('Votre profil a bien été modifié !')
-					this.displayProfile();
+					window.location.reload() 
 				})
 				.catch(error => {
 					const msgerror = error.response.data
@@ -157,6 +148,13 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			&--profileAvatarPreview {
+				object-fit: cover;
+				width: 10em;
+				height: 10em;
+				border-radius: 100%;
+				margin-top: 25px;
+			}
 			&--button--delete {
 				margin: 25px 0;
 			}

@@ -137,4 +137,14 @@
     .likeCount {
         margin-left: 10px;
     }
+    .buttonLike {
+        background-color: rgba(190, 209, 243, 1);
+        border: none;
+        border-radius: 5px;
+        width: 120px;
+        height: 35px;
+    }
+    .buttonLike:hover {
+        border: 3px solid rgba(39, 72, 128, 1);
+    }
 </style>

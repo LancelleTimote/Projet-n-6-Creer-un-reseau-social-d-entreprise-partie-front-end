@@ -60,8 +60,17 @@
         h1, h2 {
             font-size: 25px;
         }
+        h1 {
+            margin-top: 0;
+        }
+        h2 {
+            margin-top: 25px;
+        }
         li {
             font-size: 10px;
+        }
+        img {
+            width: 10em;
         }
     }
 </style>

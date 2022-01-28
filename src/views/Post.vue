@@ -5,9 +5,9 @@
             <form @submit.prevent="createPost" aria-label="Nouveau message" class="container__vue--post--newPost">
                 <h2>Quoi de neuf, {{ firstName }} ?</h2>
                 <textarea v-model="content" name="message" id="message" placeholder="Écrivez quelque chose..." aria-label="Rédiger un nouveau message"/>
-                <img class="container__vue--post--newPost--imagePreview" v-if="imagePreview" :src="imagePreview" id="preview" alt="Prévisualisation de l'image ajoutée au message"/>    
+                <img class="container__vue--post--newPost--imagePreview" v-if="imagePreview" :src="imagePreview" id="preview" alt="Prévisualisation de l'image ajoutée au message"/>
                 <div class="container__vue--post--newPost--blockButton">
-                    <input type="file" name="imageNewPost" ref="fileUpload" @change="onFileSelected"  accept="image/*" id="imageNewPost">
+                    <input type="file" name="imageNewPost" @change="onFileSelected"  accept="image/*" id="imageNewPost">
                     <label for="imageNewPost">
                         Choisir une image
                     </label>
@@ -17,7 +17,7 @@
 
             <h1>Dernières publications</h1>
             
-            <div class="displayPost" v-for="post in posts" :key="post.postId">
+            <div v-for="post in posts" :key="post.postId">
                 <div class="container__vue--post--postsPublished">
                     <div class="container__vue--post--postsPublished--header">
                         <div class="container__vue--post--postsPublished--header--block">
@@ -41,7 +41,7 @@
                             <textarea v-model="contentmodifyPost" :placeholder="post.content" id="textarea" aria-label="Modifier le message"/>
                             <img v-if="imagePreviewModifyPost" :src="imagePreviewModifyPost" alt="Prévisualisation de l'image ajoutée au message modifié"/>
                             <div class="container__vue--post--postsPublished--edit--blockButton">
-                                <input type="file" name="imageModifyPost" ref="fileUpload" @change="onFileSelectedModifyPost"  accept="image/*" id="imageModifyPost">
+                                <input type="file" name="imageModifyPost" @change="onFileSelectedModifyPost"  accept="image/*" id="imageModifyPost">
                                 <label for="imageModifyPost">
                                     Choisir une image
                                 </label>
@@ -52,18 +52,18 @@
                     <div class="container__vue--post--postsPublished--blockButtonPost">
                         <Likes v-bind:post="post"/>   
                         <div class="container__vue--post--postsPublished--blockButtonPost--buttonComment">
-                            <button @click="displayComment(post.id)" v-on:click="displayCreateComment(post.id)" aria-label="Commenter le message"><i class="far fa-comment-alt"></i>Commenter</button>
+                            <button v-on:click="displayCreateComment(post.id)" aria-label="Commenter le message"><i class="far fa-comment-alt"></i>Commenter</button>
                         </div>
                     </div>
-                    <div :formId="post.id" style="display:none" v-bind:showCreateComment="showCreateComment">
-                        <form @submit.prevent="createComment(post.id)" class="container__vue--post--postsPublished--formComment">
+                    <div :formId="post.id" v-bind:showCreateComment="showCreateComment" class="container__vue--post--postsPublished--containerCreateComment">
+                        <form @submit.prevent="createComment(post.id)" class="container__vue--post--postsPublished--containerCreateComment--form">
                             <textarea v-model="contentComment" name="comment" id="comment" placeholder="Écrivez un commentaire..." aria-label="Rédiger un nouveau commentaire"/>              
                             <button aria-label="Publier le commentaire">Publier</button>
                         </form>
                     </div>
-                    <span v-if="post.Comments.length > 1" class="container__vue--post--postsPublished--commentCount">{{ post.Comments.length }} commentaires</span>
-                    <span v-if="post.Comments.length > 0 && post.Comments.length === 1" class="container__vue--post--postsPublished--commentCount">{{ post.Comments.length }} commentaire</span>
-                    <div class="displayComment" v-for="comment in comments" :key="comment.commentId">
+                    <span @click="displayComment(post.id)" v-if="post.Comments.length > 1" class="container__vue--post--postsPublished--commentCount">{{ post.Comments.length }} commentaires</span>
+                    <span @click="displayComment(post.id)" v-if="post.Comments.length === 1" class="container__vue--post--postsPublished--commentCount">{{ post.Comments.length }} commentaire</span>
+                    <div v-for="comment in comments" :key="comment.commentId">
                         <div v-bind:showComment="showComment" v-if="showComment && post.id == comment.postId" class="container__vue--post--postsPublished--comments">
                             <div class="container__vue--post--postsPublished--comments--header">
                                 <div class="container__vue--post--postsPublished--comments--header--block">
@@ -206,24 +206,11 @@
                 this.showInputModify === false
                 let input = document.querySelector('div[inputId="'+id+'"]');
                 let inputId = input.getAttribute('inputId');
-                let contentPost = document.querySelector('p[contentPostId="'+id+'"]');
-                let contentPostId = contentPost.getAttribute('contentPostId');
-                let imgPreviewCreatePost = document.querySelector('#preview');
-                if(postId == inputId && postId == contentPostId && this.showInputModify === false) {
+                if(postId == inputId && this.showInputModify === false) {
                     input.style.display = "block";
-                    contentPost.style.display = "none";
-                    imgPreviewCreatePost.style.display = "none";
                     this.showInputModify = !this.showInputModify
-                    let imgPost = document.querySelector('img[imgPostId="'+id+'"]');
-                    let imgPostId = imgPost.getAttribute('imgPostId');
-                    if(postId == imgPostId) {
-                        imgPost.style.display = "none";
-                    }
                 } else if(postId == inputId && this.showInputModify === true) {
                     input.style.display = "none";
-                    contentPost.style.display = "block";
-                    let imgPost = document.querySelector('img[imgPostId="'+id+'"]')
-                    imgPost.style.display = "block";
                     this.showInputModify = !this.showInputModify
                 }
             },
@@ -317,7 +304,7 @@
 </script>
 
 <style scoped lang="scss">
-    .container__vue--post--newPost, .container__vue--post--postsPublished--edit, .container__vue--post--postsPublished--formComment {
+    .container__vue--post--newPost, .container__vue--post--postsPublished--edit, .container__vue--post--postsPublished--containerCreateComment--form {
         textarea {
             height: 7em;
             resize: none;
@@ -325,7 +312,7 @@
             border-radius: 5px;
         }
     }
-    .container__vue--post--newPost--blockButton, .container__vue--post--postsPublished--edit--blockButton, .container__vue--post--postsPublished--blockButtonPost--buttonComment, .container__vue--post--postsPublished--formComment {
+    .container__vue--post--newPost--blockButton, .container__vue--post--postsPublished--edit--blockButton, .container__vue--post--postsPublished--blockButtonPost--buttonComment, .container__vue--post--postsPublished--containerCreateComment--form {
         button {
             background-color: rgba(190, 209, 243, 1);
             border: none;
@@ -369,6 +356,11 @@
             }
         }
     }
+    .container__vue--post--newPost--imagePreview, .container__vue--post--postsPublished--content img, .container__vue--post--postsPublished--edit img {
+        display: flex;
+        max-width: 38.5em;
+        max-height: 21.5em;
+    }
     .container__vue {
         main {
             background-image: none;
@@ -398,11 +390,8 @@
                 textarea {
                     width: 47.2em;
                 }
-                &--imagePreview {
-                    display: flex;
+                &--imagePreview {  
                     margin: 20px auto 0 auto;
-                    max-width: 38.5em;
-                    max-height: 30em;
                 }
             }
             &--postsPublished {
@@ -455,10 +444,7 @@
                         margin-bottom: 10px;
                     }
                     img {
-                        display: flex;
                         margin: 2px auto;
-                        max-width: 38.5em;
-                        max-height: 30em;
                     }
                 }
                 &--edit {
@@ -468,26 +454,13 @@
                         width: 47.4em;
                     }
                     img {
-                        display: flex;
                         margin: 20px auto;
-                        max-width: 38.5em;
-                        max-height: 30em;
                     }
                 }
                 &--blockButtonPost {
                     display: flex;
                     justify-content: space-around;
                     margin-top: 15px;
-                    .buttonLike {
-                        background-color: rgba(190, 209, 243, 1);
-                        border: none;
-                        border-radius: 5px;
-                        width: 120px;
-                        height: 35px;
-                    }
-                    .buttonLike:hover {
-                        border: 3px solid rgba(39, 72, 128, 1);
-                    }
                     &--buttonComment {
                         button {
                             width: 120px;
@@ -503,18 +476,22 @@
                     }
                 }
                 &--commentCount {
+                    cursor: pointer;
                     margin-top: 20px;
                 }
-                &--formComment {
-                    margin-top: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    textarea {
-                        margin-bottom: 20px;
-                    }
-                    button {
-                        width: 120px;
-                        height: 35px;
+                &--containerCreateComment {
+                    display: none;
+                    &--form {
+                        margin-top: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        textarea {
+                            margin-bottom: 20px;
+                        }
+                        button {
+                            width: 120px;
+                            height: 35px;
+                        }
                     }
                 }
                 &--comments {
@@ -570,7 +547,7 @@
                 font-size: 1.5em;
             }
             &--newPost {
-                width: 17em;
+                width: 20em;
                 padding: 10px;
                 h2 {
                     text-align: center;
@@ -578,15 +555,15 @@
                     margin-bottom: 10px;
                 }
                 textarea {
-                    width: 19.5em;
+                    width: 23.3em;
                 }
                 &--imagePreview {
                     margin-top: 10px;
-                    width: 16em;
+                    max-width: 19em;
                 }
             }
             &--postsPublished {
-                width: 17em;
+                width: 20em;
                 padding: 10px;
                 margin-bottom: 10px;
                 &--header {
@@ -619,13 +596,18 @@
                         font-size: 12px;
                     }
                     img {
-                        width: 15em;
+                        max-width: 18.5em;
                     }
                 }
                 &--edit {
                     textarea {
                         margin-top: 10px;
-                        width: 19.7em;
+                        width: 23.4em;
+                    }
+                    img {
+
+                        margin: 10px auto 15px auto;
+                        max-width: 19em;
                     }
                 }
                 &--blockButtonPost {
@@ -639,7 +621,7 @@
                     margin-top: 10px;
                     font-size: 12px;
                 }
-                &--formComment {
+                &--containerCreateComment--form {
                     button {
                         font-size: 10px;
                         width: 100px;
@@ -675,6 +657,36 @@
                     }
                     &--content {
                         font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 320px) {
+        .container__vue--post {
+            &--newPost {
+                width: 17em;
+                textarea {
+                    width: 19.5em;
+                }
+                &--imagePreview {
+                    width: 16em;
+                }
+            }
+            &--postsPublished {
+                width: 17em;
+                &--content {
+                    img {
+                        width: 15em;
+                    }
+                }
+                &--edit {
+                    textarea {
+                        width: 19.7em;
+                    }
+                    img {
+                        margin-top: 10px;
+                        width: 16em;
                     }
                 }
             }
