@@ -4,7 +4,7 @@
         <main class="container__vue--mainIndex">
             <div class="container">
                 <section>
-                    <p><img src="../assets/logo_home.png" alt="Logo de l'entreprise Groupomania" title="C'est un logo de l'entreprise Groupomania."/></p>
+                    <p><img src="../assets/logo_white_home.png" alt="Logo de l'entreprise Groupomania" title="C'est un logo de l'entreprise Groupomania."/></p>
                     <p>Bienvenue sur votre réseau social d'entreprise</p>
                     <ul>
                         <li>
