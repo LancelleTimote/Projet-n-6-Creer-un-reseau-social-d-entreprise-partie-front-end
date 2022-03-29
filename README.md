@@ -81,6 +81,7 @@ Le projet consiste à construire un réseau social interne pour les employés de
 ## :question: 7. Utilisation du site web <a name = "utilisation_siteweb"></a>
 
 * Pour démarrer l'application, dans le terminal à partir du dossier front-end, exécuter npm run serve.
+* Faire le necéssaire côté back-end.
 * Ensuite ouvrir le navigateur et aller sur : http://localhost:8080/
 
 ## :beers: 8. Auteurs et Contributeurs <a name = "auteurs_contributeurs"></a>
